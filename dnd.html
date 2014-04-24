@@ -4,15 +4,10 @@
 		<meta charset="utf-8">
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>REGISAFE WebApp</title>
+		<title>RS_CONCEPT</title>
 		
-		<!-- Bootstrap CSS einbinden -->
-		<link href="bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet" />
-		
-		<!-- Eigene Styles einbinden -->
-		<link href="css/offcanvas.css" rel="stylesheet" />
-		<link href="css/font.css" rel="stylesheet" />
-		<link href="css/style.css" rel="stylesheet" />
+		<!-- jQuery einbinden -->
+		 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 		
 		<!-- HTML5 Shim und Respond.js für IE8 Support von HTML5 Elementen -->
     	<!--[if lt IE 9]>
@@ -20,60 +15,27 @@
       	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     	<![endif]-->
 		
+		<style>
+			
+			#makeMeDraggable{
+				width:300px;
+				height:300px;
+				background:#cccccc;
+			}
+			
+		</style>
+		
 	</head>
 	
 	<body>
-		
-		<style type="text/css">
-		.contWrap{
-			width:600px;
-			border:2px dashed #CCC;
-			margin:0 auto;
-		}
-		.cont{
-			width:292px;
-			height:290px;
-			background:#245269;
-			margin:3px;
-			float:left;
-		}
-		
-		.enter{
-			background:#C7254E;
-		}
-		
-		/* clearFloat */
-		.contWrap:before, .contWrap:after{
-			content:" ";
-			display:table;
-		}
-		
-		 .contWrap:after{
-		 	clear:both;
-		 }
-		 
-		 .contWrap{
-		 zoom:1; /* IE7 fix */
-		 }
-		</style>
-		
-		<div class="contWrap">
-			
-			<a class="cont" draggable="true">
-				<h3>head 1</h3>
-				<p>body</p>
-			</a>
-			
-			<a class="cont" draggable="true">
-				<h3>head 2</h3>
-				<p>body</p>
-			</a>
-			
+
+		<div id="content" style="height:400px;">
+			<div id="makeMeDraggable"></div>
 		</div>
-		
 		
 		<!-- jQuery einbinden -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 		<!-- Bootstrap JS einbinden -->
 		<script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
 		<!-- eigene Funktionen einbinden -->
