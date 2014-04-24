@@ -1,0 +1,18 @@
+/* Fonts einbinden */
+@font-face{
+	font-family:'CorbeauPro_Normal';
+	src: url('../font/corbeau_pro/CorbeauPro-Normal.otf')  format("opentype");
+}
+
+@font-face{
+	font-family:'CorbeauPro_Light';
+	src: url('../font/corbeau_pro/CorbeauPro-Light.otf')  format("opentype");
+}
+
+H3{
+	font-family:'CorbeauPro_Normal'
+}
+
+BODY{
+	font-family:'CorbeauPro_Light'
+}

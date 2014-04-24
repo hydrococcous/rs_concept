@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>REGISAFE WebApp</title>
+		
+		<!-- Bootstrap CSS einbinden -->
+		<link href="bootstrap-3.1.1-dist/css/bootstrap.css" rel="stylesheet" />
+		
+		<!-- Eigene Styles einbinden -->
+		<link href="css/offcanvas.css" rel="stylesheet" />
+		<link href="css/font.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		
+		<!-- HTML5 Shim und Respond.js für IE8 Support von HTML5 Elementen -->
+    	<!--[if lt IE 9]>
+    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    	<![endif]-->
+		
+	</head>
+	
+	<body>
+		
+		<style type="text/css">
+		.contWrap{
+			width:600px;
+			border:2px dashed #CCC;
+			margin:0 auto;
+		}
+		.cont{
+			width:292px;
+			height:290px;
+			background:#245269;
+			margin:3px;
+			float:left;
+		}
+		
+		.enter{
+			background:#C7254E;
+		}
+		
+		/* clearFloat */
+		.contWrap:before, .contWrap:after{
+			content:" ";
+			display:table;
+		}
+		
+		 .contWrap:after{
+		 	clear:both;
+		 }
+		 
+		 .contWrap{
+		 zoom:1; /* IE7 fix */
+		 }
+		</style>
+		
+		<div class="contWrap">
+			
+			<a class="cont" draggable="true">
+				<h3>head 1</h3>
+				<p>body</p>
+			</a>
+			
+			<a class="cont" draggable="true">
+				<h3>head 2</h3>
+				<p>body</p>
+			</a>
+			
+		</div>
+		
+		
+		<!-- jQuery einbinden -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<!-- Bootstrap JS einbinden -->
+		<script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+		<!-- eigene Funktionen einbinden -->
+		<script src="js/function.js"></script>
+		<!-- Modenizr einbinden -->
+		<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+	</body>
+	
+</html>
