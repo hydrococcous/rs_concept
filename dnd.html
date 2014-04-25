@@ -5,8 +5,13 @@
 	<title>jQuery UI Draggable + Sortable</title>
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.js"></script>
 	
 	<style>
+	BODY{
+		font-family:'Arial';
+		font-size:11px;
+	}
 	.clearfix:before, .clearfix:after{
 		content: " "; 
 		display:table;
@@ -34,7 +39,8 @@
 	.nav UL LI{
 		background: #aaa;
 		margin:0 5px 5px 5px;
-		padding:3px 20px 3px 3px;
+		padding:3px 20px 3px 10px;
+		font-size:20px;
 	}
 	
 	.content{
@@ -45,52 +51,90 @@
 		}
 	
 	.content LI{
-		width:100px;
-		height:100px;
+		width:150px;
+		height:150px;
 		float:left;
 	}
 	
 	.elem{
-		width:100px;
-		height:100px;
+		width:150px;
+		height:150px;
 		float:left;
 		background:#ff00ff;
 		margin:5px;
+		position:relative;
+		overflow:hidden;
 	}
 	.elemGhost{
-		width:100px;
-		height:100px;
+		width:150px;
+		height:150px;
 		float:left;
 		background:#00ff00;
 		margin:5px;
 		list-style-type: none;
+	}
+	.close{
+		position:absolute;
+		right:0;
+		top:0;
+		padding:0 5px 0 0;
+	}
+	h4{
+		padding:4px;
+		margin:0;
+		background:#00ff00;
+		font-size:14px;
+	}
+	p{
+		padding:5px;
+	}
+	
+	/* Drag&Drop mobile */
+	#block {
+		position: absolute;
+		width: 100px;
+		height: 100px;
+		left: 100px;
+		top: 100px;
+		background-color: blue;
 	}
 	</style>
 	
 	</style>
 	<script>
 	$(function(){
+		
+		// jQuery sortable
 		$('#sortable').sortable({
 			revert: true,
 			placeholder:'elemGhost',
+			start: function(event, ui){
+			},
 			stop: function(event, ui){
 				var relation = $(ui.item).attr('rel');
 				var content = $(ui.item).html();
-				ui.item.replaceWith('<div class="elem" rel="' + relation + '">' + content + '<a href="#" class="close">close</a></div>');
+				if(!$(ui.item).hasClass('elem')){
+					ui.item.replaceWith('<div class="elem" rel="' + relation + '"><h4>' + content + '</h4><a href="#" class="close">x</a></div>');
+					loadContent($('.content [rel='+relation+']'),relation);
+				}
 			},
 			receive: function(event, ui){
 				ui.item.draggable('disable');
 				ui.item.css('opacity','0.4');
-				//console.log(ui.item);
 			}
 		});
 		
+		// jQuery draggable
 		$('#draggable LI').draggable({
 			connectToSortable: '#sortable',
 			helper:'clone',
-			revert:'invalid'
-		});
+			revert:'invalid',
+			cursor:'move',
+			create:checkExistingElements
+		}).disableSelection();
 		
+		// Elemente aus Content wieder Löschen und
+		// in Navigation wieder freigeben
 		$('BODY').on('click','.close',function(){
 			var navItem = $(this).parent().attr('rel');	
 			$('UL LI[rel="'+navItem+'"]').draggable();
@@ -98,6 +142,30 @@
 			$('UL LI[rel="'+navItem+'"]').css('opacity','1.0');
 			$(this).parent().remove();
 		});
+		
+		// Prüfen ob Elemente bereist in content vorhanden sind
+		// und die entsprechenden menüpunkte deaktivieren
+		function checkExistingElements(event, ui){
+			var relTarget = $(event.target).attr('rel');
+			if($('.content [rel=' + relTarget + ']').length > 0){
+				loadContent('.content [rel=' + relTarget + ']',relTarget);			
+				$(event.target).draggable();
+				$(event.target).draggable('disable');
+				$(event.target).css('opacity','0.4');
+			}
+		}
+		
+		function loadContent(container,contentRelation){
+			$.ajax({
+				type:'POST',
+				url: 'modul.php',
+				data:{content:contentRelation},
+				success:function(data){
+					$(container).append('<p>'+data+'</p>');
+				}
+				
+			});
+		}
 		
 	});
 	</script>
@@ -122,11 +190,11 @@
 		
 		<div class="content" id="sortable">
 			
-			<div class="elem">1</div>
-			<div class="elem">2</div>
-			<div class="elem">3</div>
-			<div class="elem">4</div>
-			<div class="elem">5</div>
+			
+			<div rel="item_3" class="elem"><h4>Item 7</h4><a href="#" class="close">x</a></div>
+			<div rel="item_5" class="elem"><h4>Item 7</h4><a href="#" class="close">x</a></div>
+			<div rel="item_7" class="elem"><h4>Item 7</h4><a href="#" class="close">x</a></div>
+			
 			
 		</div>
 		
