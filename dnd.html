@@ -1,63 +1,136 @@
-<!DOCTYPE html>
-<html lang="de">
-	<head>
-		<meta charset="utf-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>RS_CONCEPT</title>
-		
-		<!-- jQuery einbinden -->
-		 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-		
-		<!-- HTML5 Shim und Respond.js für IE8 Support von HTML5 Elementen -->
-    	<!--[if lt IE 9]>
-    	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    	<![endif]-->
-		
-		<style>
-			
-			#makeMeDraggable{
-				width:300px;
-				height:300px;
-				background:#cccccc;
-				float:left;
-			}
-			
-			#makeMeDroppable{
-				width:300px;
-				height:300px;
-				background:#ff9933;
-				float:right;
-			}
-			
-			
-			#makeMeDraggable.ui-draggable-dragging { background: #aaaaaa;}
-			
-			#content{
-				border:2px dashed #AAA;
-			}
-			
-		</style>
-		
-	</head>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Draggable + Sortable</title>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	
-	<body>
-
-		<div id="content" style="height:400px;">
-			<div id="makeMeDraggable"></div>
-			<div id="makeMeDroppable"></div>
+	<style>
+	.clearfix:before, .clearfix:after{
+		content: " "; 
+		display:table;
+		}
+	
+	.clearfix:after{
+		clear:both
+		}
+	
+	.wrapper{
+		border:2px dashed #CCC; 
+		padding:10px;
+		}
+	
+	.nav{
+		float:left; 
+		}
+	
+	UL{
+		list-style-type: none;
+		padding:0 10px 10px 10px;
+		margin:0;
+		}
+	
+	.nav UL LI{
+		background: #aaa;
+		margin:0 5px 5px 5px;
+		padding:3px 20px 3px 3px;
+	}
+	
+	.content{
+		float:left; 
+		padding:10px;
+		width:660px;
+		background:#ddd;
+		}
+	
+	.content LI{
+		width:100px;
+		height:100px;
+		float:left;
+	}
+	
+	.elem{
+		width:100px;
+		height:100px;
+		float:left;
+		background:#ff00ff;
+		margin:5px;
+	}
+	.elemGhost{
+		width:100px;
+		height:100px;
+		float:left;
+		background:#00ff00;
+		margin:5px;
+		list-style-type: none;
+	}
+	</style>
+	
+	</style>
+	<script>
+	$(function(){
+		$('#sortable').sortable({
+			revert: true,
+			placeholder:'elemGhost',
+			stop: function(event, ui){
+				var relation = $(ui.item).attr('rel');
+				var content = $(ui.item).html();
+				ui.item.replaceWith('<div class="elem" rel="' + relation + '">' + content + '<a href="#" class="close">close</a></div>');
+			},
+			receive: function(event, ui){
+				ui.item.draggable('disable');
+				ui.item.css('opacity','0.4');
+				//console.log(ui.item);
+			}
+		});
+		
+		$('#draggable LI').draggable({
+			connectToSortable: '#sortable',
+			helper:'clone',
+			revert:'invalid'
+		});
+		
+		$('BODY').on('click','.close',function(){
+			var navItem = $(this).parent().attr('rel');	
+			$('UL LI[rel="'+navItem+'"]').draggable();
+			$('UL LI[rel="'+navItem+'"]').draggable('enable');
+			$('UL LI[rel="'+navItem+'"]').css('opacity','1.0');
+			$(this).parent().remove();
+		});
+		
+	});
+	</script>
+</head>
+<body>
+	
+	<div class="wrapper clearfix">
+		
+		<div class="nav">
+			<ul id="draggable">
+				<li rel="item_1">Item 1</li>
+				<li rel="item_2">Item 2</li>
+				<li rel="item_3">Item 3</li>
+				<li rel="item_4">Item 4</li>
+				<li rel="item_5">Item 5</li>
+				<li rel="item_6">Item 6</li>
+				<li rel="item_7">Item 7</li>
+				<li rel="item_8">Item 8</li>
+				<li rel="item_9">Item 9</li>
+			</ul>
 		</div>
 		
-		<!-- jQuery einbinden -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-		<!-- Bootstrap JS einbinden -->
-		<script src="bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
-		<!-- eigene Funktionen einbinden -->
-		<script src="js/function.js"></script>
-		<!-- Modenizr einbinden -->
-		<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
-	</body>
+		<div class="content" id="sortable">
+			
+			<div class="elem">1</div>
+			<div class="elem">2</div>
+			<div class="elem">3</div>
+			<div class="elem">4</div>
+			<div class="elem">5</div>
+			
+		</div>
+		
+	</div>
 	
+</body>
 </html>

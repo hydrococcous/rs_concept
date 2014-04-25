@@ -8,30 +8,36 @@ $(document).ready(function(){
 });
 
 
+/* Drag&Drop */
 $(init);
 
 function init(){
-	$('#makeMeDraggable').draggable({
+	$('.makeMeDraggable').draggable({
 		containment:'#content',
 		cursor:'move',
-		snap:'#makeMeDroppable',
-		revert: true
+		snap:'.makeMeDroppable',
+		revert: false,
+		helper: 'clone'
 	});
 	
-	$('#makeMeDroppable').droppable({
-		drop: handleDropEvent
+	$('.makeMeDroppable').droppable({
+		accept: '.makeMeDraggable',
+		drop: handleDropEvent,
+		over: function(event, ui){
+			$(this).html('<div style="position:absolute;">Drop it!!!</div>')
+		}
 	});
 } 
 
 function handleDropEvent(event, ui){
-	var draggable = ui.draggable;
-	ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
-	ui.draggable.draggable( 'option', 'revert', false );
+
+	var dragElem = ui.draggable.clone();
+	dragElem.draggable({
+		revert: false,
+		helper: 'clone',
+		snap:'.makeMeDroppable'	
+	});
+	dragElem.css({'top': 0, 'left': 0});
+	$(this).append(dragElem);
 }
 
-
-$('#makeMeDraggable').on('drag', function(event, ui){
-	
-	console.log('google jquery ui drag drop drag again);
-	
-});
