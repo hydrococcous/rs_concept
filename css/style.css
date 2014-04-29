@@ -3,5 +3,45 @@
 }
 
 .elemGhost{
-	background:#ff00ff;
+	border:2px dashed #AAA;
+	height:220px!important;
+	float:left;
+}
+.ui-sortable-helper{
+	height:50px!important;
+}
+
+.elem STRONG{
+	display:block;
+}
+
+.elem A:after{
+	content:"\00A0\00BB";
+}
+
+
+.elem{
+	min-height:230px;
+	max-height:230px;
+	overflow:hidden;
+		margin-bottom:18px;
+	
+}
+
+.elem .innerWrap{
+	background:#eee;
+	padding:10px 10px 0 10px;
+	min-height:220px;
+	max-height:220px;
+
+}
+
+.elem UL{
+	padding:0;
+	margin:0 0 0 15px;
+}
+
+.elem TEXTAREA{
+	width:100%;
+	resize: none;
 }

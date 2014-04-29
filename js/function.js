@@ -15,8 +15,11 @@ $(function(){
 	// jQuery sortable
 	$('#sortable').sortable({
 		revert: true,
+		helper:'clone',
 		placeholder:'col-6 col-sm-6 col-lg-4 elemGhost',
 		start: function(event, ui){
+			ui.placeholder.height(ui.item.height());
+			ui.placeholder.height(ui.helper.outerHeight());
 		},
 		stop: function(event, ui){
 			var relation = $(ui.item).attr('rel');
@@ -24,11 +27,13 @@ $(function(){
 			if(!$(ui.item).hasClass('elem')){
 				ui.item.replaceWith(
 					'<div class="elem col-6 col-sm-6 col-lg-4" rel="' + relation + '">' +
+					'<div class="innerWrap">' +
 					'<h3>'+head+'</h3>' +
 					'<p>xxx Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe ich ein: der Blindtext. Genau zu diesem Zwecke erschaffen, immer im Schatten meines großen Bruders »Lorem Ipsum«, freue ich mich jedes Mal, wenn Sie ein paar Zeilen lesen. </p>' +
+					'</div>' +
 					'</div>');
 					
-				//loadContent($('.content [rel='+relation+']'),relation);
+				loadContent($('#sortable DIV[rel='+relation+'] P'),relation);
 			}
 		},
 		receive: function(event, ui){
@@ -76,7 +81,8 @@ $(function(){
 			url: 'modul.php',
 			data:{content:contentRelation},
 			success:function(data){
-				$(container).append('<p>'+data+'</p>');
+				console.log(container);
+				$(container).html('<p>'+data+'</p>');
 			}
 			
 		});

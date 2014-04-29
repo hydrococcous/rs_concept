@@ -26,39 +26,39 @@
 		
 		
 		
+		<div class="container">	
 			
-		<!-- Navigationsbar -->
-		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle Navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#">REGISAFE</a>
-				</div><!-- navbar-header - ENDE -->
-				
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="#">Start</a></li>
-						<li><a href="#">Suchen</a></li>
-						<li><a href="#">Finden&nbsp;&amp;&nbsp;Wissen</a></li>
-						<li><a href="#">Mails/Wiedervorlagen</a></li>
-						<li><a href="#">Terminkalender</a></li>
-					</ul>
-				</div><!-- navbar-collapse - ENDE -->
-			</div><!-- container-fluid - ENDE -->			
-		</nav><!-- navbar-default - ENDE -->
+			<!-- Navigationsbar -->
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle Navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">REGISAFE</a>
+					</div><!-- navbar-header - ENDE -->
+					
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li class="active"><a href="#">Start</a></li>
+							<li><a href="#">Suchen</a></li>
+							<li><a href="#">Finden&nbsp;&amp;&nbsp;Wissen</a></li>
+							<li><a href="#">Mails/Wiedervorlagen</a></li>
+							<li><a href="#">Terminkalender</a></li>
+						</ul>
+					</div><!-- navbar-collapse - ENDE -->
+				</div><!-- container-fluid - ENDE -->			
+			</nav><!-- navbar-default - ENDE -->
 		
-		<div class="container">
 			<div class="row row-offcanvas row-offcanvas-left">
 				
 				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
 					
 					<div class="list-group" id="draggable">
-						<a href="#" class="list-group-item" rel="item_1">Aktenplan</a>
+						<a href="#" class="list-group-item" rel="item_1">Mein Regisafe</a>
 						<a href="#" class="list-group-item" rel="item_2">Teilakten Vorgänge</a>
 						<a href="#" class="list-group-item" rel="item_3">Schriftgut</a>
 						<a href="#" class="list-group-item" rel="item_4">Adressen</a>
@@ -83,13 +83,68 @@
 					<div class="row" id="sortable">
 						
 						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_1">
-							<h3>Aktenplan</h3>
-							<p>Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe ich ein: der Blindtext. Genau zu diesem Zwecke erschaffen, immer im Schatten meines großen Bruders »Lorem Ipsum«, freue ich mich jedes Mal, wenn Sie ein paar Zeilen lesen. </p>
+							<div class="innerWrap">
+							<h3>Mein Regisafe</h3>
+							<p>
+								<strong>REGISAFE public 4.4ß</strong>
+								<span>Hans Held GmbH - Server Stuttgart</span>
+							</p>
+							<p>	
+								<strong>Sandro Birke</strong>
+								<a href="#">Meine Einstellungen</a><br />
+								<a href="#">Alle angemeldeten Benutzer</a>
+							</p>
+							</div>
 						</div>
 						
 						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_2">
-							<h3>Teilakten Vorgänge</h3>
-							<p>Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe ich ein: der Blindtext. Genau zu diesem Zwecke erschaffen, immer im Schatten meines großen Bruders »Lorem Ipsum«, freue ich mich jedes Mal, wenn Sie ein paar Zeilen lesen. </p>
+							<div class="innerWrap">
+							<h3>Mails/Wiedervorlagen</h3>
+							<p>
+								<strong>2 neue Mails/Wiedervorlagen</strong>
+								<span>48 aktuelle Mails/Wiedervorlagen insg.</span>
+							</p>
+							</div>
+						</div>
+						
+						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_3">
+							<div class="innerWrap">
+							<h3>KommunalPLUS Sitzung</h3>
+							<p>
+								<span>Keine Sitzung vorhanden.</span>
+							</p>
+							</div>
+						</div>
+						
+						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_4">
+							<div class="innerWrap">
+							<h3>Terminkalender</h3>
+							<p>
+								<strong>Montag, 28.04.2014</strong>
+								<span>10:30 Uhr Vertriebsbesprechung</span>
+							</p>
+							<p>
+								<strong>Dienstag, 28.04.2014</strong>
+								<span>Keine Termine</span>
+							</p>
+							</div>
+						</div>
+						
+						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_5">
+							<div class="innerWrap">
+							<h3>Favoriten</h3>
+							<ul>
+								<li><a href="#">Aktenplan</a></li>
+								<li><a href="#">Teilakten/Vorgänge</a></li>
+							</ul>
+							</div>
+						</div>
+						
+						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_6">
+							<div class="innerWrap">
+							<h3>Notizen</h3>
+							<textarea rows="5" ></textarea>
+							</div>
 						</div>
 						
 					</div>
