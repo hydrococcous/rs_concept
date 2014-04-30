@@ -28,7 +28,7 @@ $(function(){
 				ui.item.replaceWith(
 					'<div class="elem col-6 col-sm-6 col-lg-4" rel="' + relation + '">' +
 					'<div class="innerWrap">' +
-					'<h3>'+head+'</h3>' +
+					'<h3>'+head+'<span class="close"></span></h3>' +
 					'<p>xxx Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe ich ein: der Blindtext. Genau zu diesem Zwecke erschaffen, immer im Schatten meines großen Bruders »Lorem Ipsum«, freue ich mich jedes Mal, wenn Sie ein paar Zeilen lesen. </p>' +
 					'</div>' +
 					'</div>');
@@ -56,11 +56,12 @@ $(function(){
 	// Elemente aus Content wieder Löschen und
 	// in Navigation wieder freigeben
 	$('BODY').on('click','.close',function(){
-		var navItem = $(this).parent().attr('rel');	
+		var navItem = $(this).closest('.elem').attr('rel');	
 		$('A[rel="'+navItem+'"]').draggable();
 		$('A[rel="'+navItem+'"]').draggable('enable');
 		$('A[rel="'+navItem+'"]').css('opacity','1.0');
-		$(this).parent().remove();
+		//$(this).parent().remove();
+		$(this).closest('.elem').remove();
 	});
 	
 	// Prüfen ob Elemente bereist in content vorhanden sind

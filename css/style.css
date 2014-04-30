@@ -45,3 +45,17 @@
 	width:100%;
 	resize: none;
 }
+
+H3{
+	margin-top:0px;
+	position:relative;
+}
+
+H3 SPAN.close{
+	position:absolute;	
+	right:0px;
+}
+
+H3 SPAN.close:after{
+	content:'x'
+}

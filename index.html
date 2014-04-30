@@ -48,6 +48,24 @@
 							<li><a href="#">Finden&nbsp;&amp;&nbsp;Wissen</a></li>
 							<li><a href="#">Mails/Wiedervorlagen</a></li>
 							<li><a href="#">Terminkalender</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Elemente <b class="caret"></b></a>
+								
+								<ul class="dropdown-menu" id="draggable">
+									<li><a href="#" rel="item_1">Mein Regisafe</a></li>
+									<li><a href="#" rel="item_2">Mails Wiedervorlagen</a></li>
+									<li><a href="#" rel="item_3">KommunalPlus Sitzung</a></li>
+									<li><a href="#" rel="item_4">Terminkalender</a></li>
+									<li><a href="#" rel="item_5">Favoriten</a></li>
+									<li><a href="#" rel="item_6">Notizen</a></li>
+									<li><a href="#" rel="item_7">Zuletzt bearbeitet</a></li>
+									<li><a href="#" rel="item_8">Lexikon der Helden</a></li>
+									<li><a href="#" rel="item_9">Eigenes Bild</a></li>
+									<li><a href="#" rel="item_10">Gespeicherte Suchkriterien</a></li>
+									<li><a href="#" rel="item_11">Standard-Bild</a></li>
+								</ul>
+								
+							</li>
 						</ul>
 					</div><!-- navbar-collapse - ENDE -->
 				</div><!-- container-fluid - ENDE -->			
@@ -57,19 +75,33 @@
 				
 				<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
 					
+					<div class="list-group">
+						<a href="#" class="list-group-item">Aktenplan</a>
+						<a href="#" class="list-group-item">Teilakten/Vorgänge</a>
+						<a href="#" class="list-group-item">Schriftgut</a>
+						<a href="#" class="list-group-item">Adressen</a>
+						<a href="#" class="list-group-item">KommunalPLUS</a>
+						<a href="#" class="list-group-item">Mails/Wiedervorlagen</a>
+						<a href="#" class="list-group-item">Terminkalender</a>
+						<a href="#" class="list-group-item">Lizenzen</a>
+						<a href="#" class="list-group-item">Extras</a>
+						<a href="#" class="list-group-item">Programm</a>
+					</div>
+					<!--
 					<div class="list-group" id="draggable">
 						<a href="#" class="list-group-item" rel="item_1">Mein Regisafe</a>
-						<a href="#" class="list-group-item" rel="item_2">Teilakten Vorgänge</a>
-						<a href="#" class="list-group-item" rel="item_3">Schriftgut</a>
-						<a href="#" class="list-group-item" rel="item_4">Adressen</a>
-						<a href="#" class="list-group-item" rel="item_5">KommunalPlus</a>
-						<a href="#" class="list-group-item" rel="item_6">Mails Wiedervorlagen</a>
-						<a href="#" class="list-group-item" rel="item_7">Terminkalender</a>
-						<a href="#" class="list-group-item" rel="item_8">Lizenzen</a>
-						<a href="#" class="list-group-item" rel="item_9">Extras</a>
-						<a href="#" class="list-group-item" rel="item_10">Programm</a>
+						<a href="#" class="list-group-item" rel="item_2">Mails Wiedervorlagen</a>
+						<a href="#" class="list-group-item" rel="item_3">KommunalPlus Sitzung</a>
+						<a href="#" class="list-group-item" rel="item_4">Terminkalender</a>
+						<a href="#" class="list-group-item" rel="item_5">Favoriten</a>
+						<a href="#" class="list-group-item" rel="item_6">Notizen</a>
+						<a href="#" class="list-group-item" rel="item_7">Zuletzt bearbeitet</a>
+						<a href="#" class="list-group-item" rel="item_8">Lexikon der Helden</a>
+						<a href="#" class="list-group-item" rel="item_9">Eigenes Bild</a>
+						<a href="#" class="list-group-item" rel="item_10">Gespeicherte Suchkriterien</a>
+						<a href="#" class="list-group-item" rel="item_11">Standard-Bild</a>
 					</div>
-					
+					-->
 				</div>
 				
 				<div class="col-xs-12 col-sm-9">
@@ -84,7 +116,7 @@
 						
 						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_1">
 							<div class="innerWrap">
-							<h3>Mein Regisafe</h3>
+							<h3>Mein Regisafe<span class="close"></span></h3>
 							<p>
 								<strong>REGISAFE public 4.4ß</strong>
 								<span>Hans Held GmbH - Server Stuttgart</span>
@@ -99,7 +131,7 @@
 						
 						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_2">
 							<div class="innerWrap">
-							<h3>Mails/Wiedervorlagen</h3>
+							<h3>Mails/Wiedervorlagen<span class="close"></span></h3>
 							<p>
 								<strong>2 neue Mails/Wiedervorlagen</strong>
 								<span>48 aktuelle Mails/Wiedervorlagen insg.</span>
@@ -109,7 +141,7 @@
 						
 						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_3">
 							<div class="innerWrap">
-							<h3>KommunalPLUS Sitzung</h3>
+							<h3>KommunalPLUS Sitzung<span class="close"></span></h3>
 							<p>
 								<span>Keine Sitzung vorhanden.</span>
 							</p>
@@ -118,7 +150,7 @@
 						
 						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_4">
 							<div class="innerWrap">
-							<h3>Terminkalender</h3>
+							<h3>Terminkalender<span class="close"></span></h3>
 							<p>
 								<strong>Montag, 28.04.2014</strong>
 								<span>10:30 Uhr Vertriebsbesprechung</span>
@@ -132,7 +164,7 @@
 						
 						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_5">
 							<div class="innerWrap">
-							<h3>Favoriten</h3>
+							<h3>Favoriten<span class="close"></span></h3>
 							<ul>
 								<li><a href="#">Aktenplan</a></li>
 								<li><a href="#">Teilakten/Vorgänge</a></li>
@@ -142,8 +174,36 @@
 						
 						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_6">
 							<div class="innerWrap">
-							<h3>Notizen</h3>
+							<h3>Notizen<span class="close"></span></h3>
 							<textarea rows="5" ></textarea>
+							</div>
+						</div>
+						
+						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_7">
+							<div class="innerWrap">
+							<h3>Zuletzt bearbeitet<span class="close"></span></h3>
+							<ul>
+								<li><a href="#">Aktenzeichen</a></li>
+								<li><a href="#">Teilakten/Vorgänge</a></li>
+								<li><a href="#">Schriftstücke</a></li>
+								<li><a href="#">Adressen</a></li>
+								<li><a href="#">Lexikoneinträge</a></li>
+								<li><a href="#">Cases</a></li>
+							</ul>
+							</div>
+						</div>
+						
+						<div class="elem col-6 col-sm-6 col-lg-4" rel="item_8">
+							<div class="innerWrap">
+							<h3>Lexikon der Helden<span class="close"></span></h3>
+							<p>
+								<strong>Graupappe</strong>
+								<span>Spezielle Pappe mit einem Kappa-Wert von über 30 und damit NICHT entsprechend der DIN ISO 9706.</span>
+							</p>
+							<p>
+								<label>Suche im Lexikon:</label>
+								<input type="text"/>
+							</p>
 							</div>
 						</div>
 						
@@ -163,7 +223,7 @@
 		<!-- eigene Funktionen einbinden -->
 		<script src="js/function.js"></script>
 		<!-- Modenizr einbinden -->
-		<script src="http://modernizr.com/downloads/modernizr-latest.js"></script>
+		<!-- <script src="http://modernizr.com/downloads/modernizr-latest.js"></script> -->
 	</body>
 	
 </html>
