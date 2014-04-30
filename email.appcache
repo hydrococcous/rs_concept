@@ -1,0 +1,16 @@
+CACHE MANIFEST
+# 2014-04-30:v1.5
+
+CACHE:
+# Dateien auf entfernten Servern
+//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js
+
+# Lokale Dateien
+localstorage.html
+
+NETWORK:
+*
+http://*
+https://*
+
+FALLBACK:

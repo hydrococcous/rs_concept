@@ -1,92 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html manifest="email.appcache">
 	<head>
-		<title>IndexedDB</title>
+		<title>localStorage</title>
+		<!-- jQuery einbinden -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 	</head>
 	<body>
 		
-		<!-- 
-		Polyfill IndexedDBShim.min.js einbinden, um IndexedDB auch auf 
-		Opera und Safari inkl. mobiler Versionen nutzen zu können.
-		-->
-		<script src="js/IndexedDBShim.min.js"></script>
-		
-		<!--
-		Ein weiteres Problem stellt Android dar, da dieser eine veraltete Version von 
-		IndexedDB verwendet. Die Implementierung wird geprüft, und falls vorhanden
-		wird diese gezwungen IndexedDBShim zu verwenden
-		-->
-		
-		<script>
-			
-			// Keine (aktuelle) Implementierung von Indexed DB vorhanden?
-			var requireShim = typeof window.IDBVersionChangeEvent == 'undefined';
-			
-			// WebSQL vorhanden?
-			var supportsWebSql = typeof window.openDatabase != 'undefined';
-			
-			if(requireShim && supportsWebSql){
-				window.shimIndexedDB.__useShim(); // Verwendung des Polyfills erwzingen
-			}
-			
-		</script>
 		
 		<script type="text/javascript">
-		// Präfixe einfügen für unterschiedliche Implementierungen
-		window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 		
-		// Verwenden Sie "var indexedDB = ..." NICHT außerhalb einer Funktion.
-		// Ferner benötigen Sie evtl. Referenzen zu einigen window.IDB* Objekten:
-		window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
-		window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange;
-		// (Mozilla hat diese Objekte nie mit Präfixen versehen, also brauchen wir kein window.mozIDB*)
-		
-		
-		if(!window.indexedDB){
-			alert('Ihr browser unterstuetzt keine stabile version von IndexedDB');
-		} else {
-			console.log('It Rocks');
-		}
-		
-		
-		// This is what our customer data looks like.
-		const customerData = [
-		  { ssn: "444-44-4444", name: "Bill", age: 35, email: "bill@company.com" },
-		  { ssn: "555-55-5555", name: "Donna", age: 32, email: "donna@home.org" }
-		];
-		const dbName = "xxx";
-		
-		var request = indexedDB.open(dbName, 2);
-		
-		request.onerror = function(event) {
-		  // Handle errors.
-		};
-		request.onupgradeneeded = function(event) {
-		  var db = event.target.result;
-		
-		  // Create an objectStore to hold information about our customers. We're
-		  // going to use "ssn" as our key path because it's guaranteed to be
-		  // unique.
-		  var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
-		
-		  // Create an index to search customers by name. We may have duplicates
-		  // so we can't use a unique index.
-		  //objectStore.createIndex("name", "name", { unique: false });
-		
-		  // Create an index to search customers by email. We want to ensure that
-		  // no two customers have the same email, so use a unique index.
-		  objectStore.createIndex("email", "email", { unique: true });
-		
-		  // Store values in the newly created objectStore.
-		  for (var i in customerData) {
-		    objectStore.add(customerData[i]);
-		  }
-		};
+		$(document).ready(function(){
+			
+			var key = "123";
+			
+			showMails();			
+			
+			function loadMails(){
+				$.ajax({
+					cache: true,
+					dataType:'json',
+					url:'mail.php',
+					success: function(data){
+						console.log(data);
+						localStorage.setItem(key,JSON.stringify(data));
+					},
+					complete: function(){
+						showMails();
+					}
+				});
+			}
+			
+			$('#loadMails').on('click', function(){
+				loadMails();	
+			});
+			
+			
+			function showMails(){
 				
-
-
+				var myObj = JSON.parse(localStorage.getItem(key));
+				if(myObj !== null){
+					var myHTML;
+					for(var a = 0; a < myObj.length; a++){	
+						myHTML += 
+						'<tr>' +
+						'<td>' + myObj[a].datum + '</td>' +
+						'<td>' + myObj[a].betreff + '</td>' +
+						'<td>' + myObj[a].absender + '</td>' +
+						'<td>' + myObj[a].nachricht + '</td>' +
+						'</tr>';	
+					};
+				};
+				
+				$('#container TBODY').html(myHTML);
+			}
+			
+		});
+		
 		</script>
-
+		
+		<table id="container" border="1">
+			<thead>
+				<tr>
+					<th>Datum</th>
+					<th>Betreff</th>
+					<th>Absender</th>
+					<th>Nachricht</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		<button id="loadMails">E-Mails abholen</button>
 	</body>
 	
 	
