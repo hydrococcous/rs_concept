@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	
+	<head>
+		<title>Web Worker</title>
+		
+		<script type="text/javascript">
+			
+			function hello(){
+				worker.postMessage({'cmd':'autsch'});
+			}
+			
+			var worker = new Worker('js/worker.js');
+			
+			worker.addEventListener('message', function(e){
+				document.getElementById('result').textContent = e.data;
+			}, false);
+
+			
+		</script>
+		
+	</head>
+	
+	<body>
+		
+		<button onclick="hello();">Hello World</button>
+		<div id="result"></div>
+		
+	</body>
+	
+</html>

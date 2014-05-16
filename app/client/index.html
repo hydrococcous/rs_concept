@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app>
+	
+	<head>
+		<meta charset="UTF-8" />
+		<title>Node.js | Socket.io | AngularJS</title>
+	</head>
+	
+	<body>
+		
+		<style>
+			.comment{
+				color:silver
+			}
+			.comment.approved{
+				color:black
+			}
+		</style>
+	
+		<div ng-view>
+			
+			<div class="comments" ng-controller="App.comments">
+				<h1>{{count}} Kommentare</h1>
+				<ul ng-repeat="comment in comments">
+					<li class="comment" ng-class="{approved: comment.approved}">
+						<strong>{{comment.name}}: </strong>
+						<span>{{comment.text}}</span>
+						<a href="#" ng-click="approve()" ng-show="!comment.approved">approve</a>
+						<a href="#" ng-click="drop()">delete</a>
+					</li>
+				</ul>
+			</div>
+			
+		</div>	
+	
+		<script src="angular.js"></script>
+		<script src="app.js"></script>
+	</body>
+	
+</html>

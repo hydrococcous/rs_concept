@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>getUserMedia</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			
+			function checkGetUserMedia(){
+				return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+			}
+			
+			if(checkGetUserMedia()){
+				
+			} else {
+				alert('getuserMedia(); wird nicht unterst&uuml;tzt!');
+			}
+			
+		</script>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Websocket</title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			var verbindung  = new WebSocket('ws://localhost:1337/rs_concept/server.js','json');
+			
+			verbindung.onopen = function(){
+				verbindung.send('hallo Server!!!');
+			};
+			verbindung.onerror = function(error){
+				console.log('Fehler: ' + error);
+			};
+			verbindung.onmessage = function(e){
+				console.log('meldung vom Server: ' + e.data);
+			};
+		</script>
+		
+	</body>
+</html>
